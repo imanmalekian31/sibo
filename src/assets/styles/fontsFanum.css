@@ -1,0 +1,32 @@
+@font-face {
+  font-family: FaNum;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../FaNum/eot/FaNum.eot");
+  src: url("../FaNum/eot/FaNum.eot?#iefix") format("embedded-opentype"),
+    url("../FaNum/woff2/FaNum.woff2") format("woff2"),
+    url("../FaNum/woff/FaNum.woff") format("woff"),
+    url("../FaNum/ttf/FaNum.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: FaNum;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../FaNum/eot/FaNum_Medium.eot");
+  src: url("../FaNum/eot/FaNum_Medium.eot?#iefix") format("embedded-opentype"),
+    url("../FaNum/woff2/FaNum_Medium.woff2") format("woff2"),
+    url("../FaNum/woff/FaNum_Medium.woff") format("woff"),
+    url("../FaNum/ttf/FaNum_Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: FaNum;
+  font-style: normal;
+  font-weight: 700;
+  src: url("../FaNum/eot/FaNum_Bold.eot");
+  src: url("../FaNum/eot/FaNum_Bold.eot?#iefix") format("embedded-opentype"),
+    url("../FaNum/woff2/FaNum_Bold.woff2") format("woff2"),
+    url("../FaNum/woff/FaNum_Bold.woff") format("woff"),
+    url("../FaNum/ttf/FaNum_Bold.ttf") format("truetype");
+}

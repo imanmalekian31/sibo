@@ -1,0 +1,45 @@
+[
+  {
+    "title": "۴۰ برگ",
+    "items": [
+      {
+        "key": "Z1",
+        "image": "Z1.png",
+        "title": "۴۰ برگ فانتزی طلقی",
+        "perCarton": 112,
+        "price": 39500
+      },
+      {
+        "key": "Z1",
+        "image": "Z1-2.png",
+        "title": "۴۰ برگ فانتزی طلقی",
+        "perCarton": 108,
+        "price": 39500
+      }
+    ]
+  },
+  {
+    "title": "۵۰ برگ",
+    "items": [
+      {
+        "key": "B14/2",
+        "image": "B14-2.png",
+        "title": "۵۰ برگ Car Tuning طلقی",
+        "perCarton": 96,
+        "price": 46500
+      }
+    ]
+  },
+  {
+    "title": "۶۰ برگ",
+    "items": [
+      {
+        "key": "F14",
+        "image": "F14.png",
+        "title": "۶۰ برگ فانتزی طلقی",
+        "perCarton": 84,
+        "price": 51500
+      }
+    ]
+  }
+]
