@@ -1,7 +1,7 @@
 <template>
   <div class="menu-item">
     <div>
-      <div class="menu-item-image-container" @click="store.setImage(image)">
+      <div class="menu-item-image-container" @click="store.setImage(image , title)">
         <img :src="`/notebook/${image}`" class="menu-item-image" />
       </div>
       <div class="menu-item-details">

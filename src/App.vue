@@ -3,13 +3,11 @@
     class="container flex flex-col mx-auto px-3 sm:px-6 lg:px-8"
   >
     <Notebooks />
-    <img :src="`/notebook/${store.image}`" />
+    <PreviewModal />
   </main>
 </template>
 
 <script setup>
-import { useImageStore } from "@/stores/imageStore";
 import Notebooks from "@/components/Notebooks.vue";
-
-const store = useImageStore();
+import PreviewModal from "@/components/PreviewModal.vue";
 </script>
