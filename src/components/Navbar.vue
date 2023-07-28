@@ -7,7 +7,7 @@
       >
         {{ ordersStore.orders.length }}
       </span>
-      <img src="/shopping-cart.svg" class="h-6" />
+      <!-- <img src="/shopping-cart.svg" class="h-6" /> -->
     </div>
     <div class="flex items-center justify-center pt-2">
       <img class="h-8" src="/sibo-logo.png" />
