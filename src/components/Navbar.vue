@@ -7,10 +7,10 @@
       >
         {{ ordersStore.orders.length }}
       </span>
-      <img src="shopping-cart.svg" class="h-6" />
+      <img src="/shopping-cart.svg" class="h-6" />
     </div>
     <div class="flex items-center justify-center pt-2">
-      <img class="h-8" src="sibo-logo.png" />
+      <img class="h-8" src="/sibo-logo.png" />
     </div>
     <swiper
       class="h-full my-2"
@@ -26,7 +26,7 @@
         :key="category.id"
         @click="updateCategory(category, index)"
       >
-        <img src="notebook.svg" width="36" height="36" />
+        <img src="/notebook.svg" width="36" height="36" />
         <span class="text-base mt-2">{{ category.title }}</span>
       </swiper-slide>
     </swiper>
