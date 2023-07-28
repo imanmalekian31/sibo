@@ -137,6 +137,41 @@
         "title": "Pony طلقی",
         "perCarton": 96,
         "price": 46500
+      },
+      {
+        "id": "B3",
+        "image": ["B3"],
+        "title": "Lilipoot طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B7",
+        "image": ["B7"],
+        "title": "شطرنجی طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B9",
+        "image": ["B9"],
+        "title": "سه خط طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B16",
+        "image": ["B16"],
+        "title": "چهار خط طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B8/2",
+        "image": ["B8-2"],
+        "title": "دو خط انگلیسی فانتزی طلقی",
+        "perCarton": 96,
+        "price": 46500
       }
     ]
   },

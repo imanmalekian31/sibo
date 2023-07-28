@@ -56,7 +56,7 @@
                   </div>
                   <DialogTitle
                     as="h3"
-                    class="text-base font-semibold leading-6 text-gray-900 mt-2"
+                    class="text-base font-semibold leading-6 text-gray-900 mt-2 font-sans"
                   >
                     کد:
                     {{ store.notebookId }}

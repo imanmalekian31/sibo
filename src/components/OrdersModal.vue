@@ -90,7 +90,7 @@
                           <td v-if="showTitle" class="border border-slate-300">
                             {{ item.title }}
                           </td>
-                          <td class="border border-slate-300">{{ item.id }}</td>
+                          <td class="border border-slate-300 font-sans">{{ item.id }}</td>
                           <td class="border border-slate-300">
                             {{ item.perCarton }}
                           </td>
