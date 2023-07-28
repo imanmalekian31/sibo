@@ -3,7 +3,7 @@
     <div>
       <div
         class="menu-item-image-container z-10"
-        @click="store.setImage(image, title)"
+        @click="store.setImage(image, title, id)"
       >
         <div
           v-if="outOfStock"

@@ -40,21 +40,25 @@
                     {{ store.imageTitle }}
                   </DialogTitle>
                   <div class="mt-2">
-                    <carousel v-if="store.image.length > 1" wrap-around>
-                      <slide v-for="image in store.image" :key="image">
+                    <swiper
+                      :space-between="50"
+                      navigation
+                      zoom
+                      loop
+                      :modules="modules"
+                    >
+                      <swiper-slide v-for="image in store.image" :key="image">
                         <img :src="`/notebook/high-quality/${image}.png`" />
-                      </slide>
-
-                      <template #addons>
-                        <navigation />
-                        <pagination />
-                      </template>
-                    </carousel>
-                    <img
-                      v-else
-                      :src="`/notebook/high-quality/${store.image[0]}.png`"
-                    />
+                      </swiper-slide>
+                    </swiper>
                   </div>
+                  <DialogTitle
+                    as="h3"
+                    class="text-base font-semibold leading-6 text-gray-900 mt-2"
+                  >
+                    کد:
+                    {{ store.notebookId }}
+                  </DialogTitle>
                 </div>
               </div>
               <div class="mt-5 sm:mt-6">
@@ -83,11 +87,14 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Zoom } from "swiper/modules";
 import { useImageStore } from "@/stores/imageStore";
-
-import "vue3-carousel/dist/carousel.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/zoom";
 
 const store = useImageStore();
-const open = ref(true);
+
+const modules = [Navigation, Zoom];
 </script>
