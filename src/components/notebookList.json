@@ -3,18 +3,98 @@
     "title": "۴۰ برگ",
     "items": [
       {
-        "key": "Z1",
-        "image": "Z1.png",
-        "title": "۴۰ برگ فانتزی طلقی",
+        "id": "Z1",
+        "image": ["Z1", "Z1--2"],
+        "title": "فانتزی طلقی",
         "perCarton": 112,
         "price": 39500
       },
       {
-        "key": "Z1",
-        "image": "Z1-2.png",
-        "title": "۴۰ برگ فانتزی طلقی",
+        "id": "Z1/2",
+        "image": ["Z1-2", "Z1-2--2"],
+        "title": "فانتزی طلقی",
+        "perCarton": 108,
+        "price": 39500,
+        "outOfStock": true
+      },
+      {
+        "id": "Z22/2",
+        "image": ["Z22-2", "Z22-2--2"],
+        "title": "دیزنی طلقی",
+        "perCarton": 112,
+        "price": 39500
+      },
+      {
+        "id": "Z25/2",
+        "image": ["Z25-2"],
+        "title": "Lady Bug طلقی",
+        "perCarton": 112,
+        "price": 39500
+      },
+      {
+        "id": "Z25",
+        "image": ["Z25"],
+        "title": "Lady Bug طلقی",
         "perCarton": 108,
         "price": 39500
+      },
+      {
+        "id": "Z24",
+        "image": ["Z24", "Z24--2"],
+        "title": "Paw Patrol طلقی",
+        "perCarton": 112,
+        "price": 39500
+      },
+      {
+        "id": "Z23/2",
+        "image": ["Z23-2", "Z23-2--2"],
+        "title": "Pony طلقی",
+        "perCarton": 112,
+        "price": 39500
+      },
+      {
+        "id": "Z23",
+        "image": ["Z23"],
+        "title": "Pony طلقی",
+        "perCarton": 108,
+        "price": 39500
+      },
+      {
+        "id": "Z20",
+        "image": ["Z20"],
+        "title": "فانتزی طلقی آلپاکا",
+        "perCarton": 108,
+        "price": 39500
+      },
+      {
+        "id": "K51/2",
+        "image": ["K51-2", "K51-2--2"],
+        "title": "نقاشی طلقی",
+        "perCarton": 108,
+        "price": 39500,
+        "outOfStock": true
+      },
+      {
+        "id": "K50/2",
+        "image": ["K50-2"],
+        "title": "چهار خط طلقی",
+        "perCarton": 108,
+        "price": 39500,
+        "outOfStock": true
+      },
+      {
+        "id": "K52/2",
+        "image": ["K52-2"],
+        "title": "دو خط انگلیسی طلقی",
+        "perCarton": 108,
+        "price": 39500
+      },
+      {
+        "id": "Z26",
+        "image": ["Z26", "Z26--2"],
+        "title": "دیزنی Kids طلقی (حاشیه دار عروسکی)",
+        "perCarton": 112,
+        "price": 49500
       }
     ]
   },
@@ -22,9 +102,9 @@
     "title": "۵۰ برگ",
     "items": [
       {
-        "key": "B14/2",
-        "image": "B14-2.png",
-        "title": "۵۰ برگ Car Tuning طلقی",
+        "id": "B14/2",
+        "image": ["B14-2"],
+        "title": "Car Tuning طلقی",
         "perCarton": 96,
         "price": 46500
       }
@@ -34,9 +114,9 @@
     "title": "۶۰ برگ",
     "items": [
       {
-        "key": "F14",
-        "image": "F14.png",
-        "title": "۶۰ برگ فانتزی طلقی",
+        "id": "F14",
+        "image": ["F14"],
+        "title": "فانتزی طلقی",
         "perCarton": 84,
         "price": 51500
       }

@@ -1,21 +1,37 @@
 <template>
   <div class="menu-item">
     <div>
-      <div class="menu-item-image-container" @click="store.setImage(image , title)">
-        <img :src="`/notebook/${image}`" class="menu-item-image" />
+      <div
+        class="menu-item-image-container z-10"
+        @click="store.setImage(image, title)"
+      >
+        <div
+          v-if="outOfStock"
+          class="absolute text-white bg-red-500 rounded-md px-2 text-sm text-center w-full"
+        >
+          ناموجود
+        </div>
+        <img
+          :src="`/notebook/thumbnail/${image[0]}.webp`"
+          :class="['menu-item-image', outOfStock && 'opacity-40']"
+        />
       </div>
-      <div class="menu-item-details">
+      <div :class="['menu-item-details', outOfStock && 'opacity-40']">
         <h5 class="menu-item-title">{{ title }}</h5>
         <div class="menu-item-content-container">
           <div class="menu-item-content">
             <table>
-              <tbody>
+              <tbody class="space-y-1">
                 <tr>
-                  <td class="">در هر کارتون:</td>
+                  <td>کد:</td>
+                  <td class="pr-2 font-sans">{{ id }}</td>
+                </tr>
+                <tr>
+                  <td>در هر کارتون:</td>
                   <td class="pr-2">{{ perCarton.toLocaleString() }}</td>
                 </tr>
                 <tr>
-                  <td class="">قیمت هر جلد:</td>
+                  <td>قیمت هر جلد:</td>
                   <td class="pr-2">{{ price.toLocaleString() }}</td>
                 </tr>
               </tbody>
@@ -32,7 +48,7 @@
               class="text-center float-left mr-2"
               style="font-size: 8px; margin-top: 2px"
             >
-              مـیلیون
+              مـیلیـون
               <br />
               تـــومان
             </small>
@@ -47,13 +63,17 @@
 import { useImageStore } from "@/stores/imageStore";
 
 defineProps({
+  id: {
+    type: String,
+    default: "",
+  },
   title: {
     type: String,
     default: "",
   },
   image: {
-    type: String,
-    default: "",
+    type: Array,
+    default: [],
   },
   perCarton: {
     type: Number,
@@ -63,8 +83,8 @@ defineProps({
     type: Number,
     default: 0,
   },
+  outOfStock: Boolean,
 });
-
 
 const store = useImageStore();
 </script>
@@ -98,11 +118,8 @@ const store = useImageStore();
 
 .menu-item-title {
   color: #fff !important;
-  margin-top: 5px;
   font-weight: 600;
   font-size: 14px;
-  margin-bottom: 10px;
-  line-height: 1.8rem;
 }
 
 .menu-item-content-container {
@@ -112,10 +129,8 @@ const store = useImageStore();
 .menu-item-content {
   font-weight: 400;
   color: #fff;
-  font-size: 13px;
-  width: 95%;
-  height: 73px;
-  margin-top: 2px;
+  font-size: 12px;
+  margin-top: 4px;
   word-wrap: break-word !important;
   position: relative;
 }
@@ -126,7 +141,7 @@ const store = useImageStore();
   text-align: left;
   font-size: 14px;
   position: absolute;
-  bottom: 10px;
+  bottom: 4px;
   right: 10px;
 }
 </style>

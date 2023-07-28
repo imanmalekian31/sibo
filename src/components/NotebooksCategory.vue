@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-      <NotebookItem v-for="item in items" v-bind="item" />
+      <NotebookItem v-for="item in items" v-bind="{...item , title: `${title} ${item.title}`}" />
     </div>
   </div>
 </template>
@@ -28,16 +28,6 @@ defineProps({
     default: () => [],
   },
 });
-
-const list = [
-  {
-    key: "z1",
-    image: "z1.png",
-    title: "۴۰ برگ فانتزی طلقی",
-    perCarton: 112,
-    price: 39500,
-  },
-];
 </script>
 
 <style>
