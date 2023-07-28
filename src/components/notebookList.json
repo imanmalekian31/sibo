@@ -172,6 +172,34 @@
         "title": "دو خط انگلیسی فانتزی طلقی",
         "perCarton": 96,
         "price": 46500
+      },
+      {
+        "id": "B8",
+        "image": ["B8"],
+        "title": "دو خط انگلیسی کلاسیک طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B6",
+        "image": ["B6", "B6--2"],
+        "title": "نقاشی طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B6/5",
+        "image": ["B6-5", "B6-5--2"],
+        "title": "نقاشی کلاسیک طلقی",
+        "perCarton": 96,
+        "price": 46500
+      },
+      {
+        "id": "B17",
+        "image": ["B17", "Z26--2"],
+        "title": "دیزنی Kids طلقی (حاشیه دار عروسکی)",
+        "perCarton": 96,
+        "price": 56500
       }
     ]
   },
@@ -181,8 +209,22 @@
     "items": [
       {
         "id": "F14",
-        "image": ["F14"],
+        "image": ["F14", "F14--2"],
         "title": "فانتزی طلقی",
+        "perCarton": 84,
+        "price": 51500
+      },
+      {
+        "id": "F22/2",
+        "image": ["F22-2"],
+        "title": "Hello Kitty طلقی",
+        "perCarton": 84,
+        "price": 51500
+      },
+      {
+        "id": "F22",
+        "image": ["F22"],
+        "title": "Hello Kitty طلقی",
         "perCarton": 84,
         "price": 51500
       }
