@@ -1,6 +1,6 @@
 <template>
   <div class="mt-4">
-    <div>
+    <div :id="id">
       <div
         class="text-white text-center relative text-5xl m-0 z-10 float-right w-full category-title-container"
       >
@@ -19,6 +19,10 @@
 import NotebookItem from "./NotebookItem.vue";
 
 defineProps({
+  id: {
+    type: String,
+    default: "",
+  },
   title: {
     type: String,
     default: "",

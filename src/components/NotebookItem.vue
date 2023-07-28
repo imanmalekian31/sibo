@@ -56,11 +56,52 @@
         </h5>
       </div>
     </div>
+    <div
+      v-if="!outOfStock"
+      class="absolute left-0 bottom-0 text-black flex flex-col items-center space-y-2"
+    >
+      <template v-if="ordersStore.countOrder(id)">
+        <span
+          class="rounded-full p-1 bg-gold flex items-center justify-center w-8 h-8 text-xl cursor-pointer"
+          @click="ordersStore.removeOrder(id)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 448 512"
+          >
+            <path
+              d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+            />
+          </svg>
+        </span>
+        <span
+          class="rounded-full p-1 bg-gold flex items-center justify-center w-6 h-6 text-xs"
+        >
+          {{ ordersStore.countOrder(id) }}
+        </span>
+      </template>
+      <span
+        class="rounded-full p-1 bg-gold flex items-center justify-center w-8 h-8 text-xl cursor-pointer"
+        @click="ordersStore.addNewOrder({ id, title, perCarton, price })"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+          />
+        </svg>
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { useImageStore } from "@/stores/imageStore";
+import { useOrdersStore } from "@/stores/ordersStore";
 
 defineProps({
   id: {
@@ -87,6 +128,7 @@ defineProps({
 });
 
 const store = useImageStore();
+const ordersStore = useOrdersStore();
 </script>
 
 <style>

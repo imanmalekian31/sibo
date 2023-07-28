@@ -1,6 +1,7 @@
 [
   {
     "title": "۴۰ برگ",
+    "id": "40-sheets",
     "items": [
       {
         "id": "Z1",
@@ -100,6 +101,7 @@
   },
   {
     "title": "۵۰ برگ",
+    "id": "50-sheets",
     "items": [
       {
         "id": "B14/2",
@@ -112,6 +114,33 @@
   },
   {
     "title": "۶۰ برگ",
+    "id": "60-sheets",
+    "items": [
+      {
+        "id": "F14",
+        "image": ["F14"],
+        "title": "فانتزی طلقی",
+        "perCarton": 84,
+        "price": 51500
+      }
+    ]
+  },
+  {
+    "title": "۸۰ برگ",
+    "id": "80-sheets",
+    "items": [
+      {
+        "id": "F14",
+        "image": ["F14"],
+        "title": "فانتزی طلقی",
+        "perCarton": 84,
+        "price": 51500
+      }
+    ]
+  },
+  {
+    "title": "۱۰۰ برگ",
+    "id": "100-sheets",
     "items": [
       {
         "id": "F14",

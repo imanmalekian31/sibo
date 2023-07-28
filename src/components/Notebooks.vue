@@ -1,8 +1,10 @@
 <template>
-  <NotebooksCategory
+  <div class="mt-36">
+    <NotebooksCategory
     v-for="notebookType in notebookList"
     v-bind="notebookType"
-  />
+    />
+  </div>
 </template>
 
 <script setup>

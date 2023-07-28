@@ -48,7 +48,9 @@
                       :modules="modules"
                     >
                       <swiper-slide v-for="image in store.image" :key="image">
-                        <img :src="`/notebook/high-quality/${image}.png`" />
+                        <div class="swiper-zoom-container">
+                          <img :src="`/notebook/high-quality/${image}.png`" />
+                        </div>
                       </swiper-slide>
                     </swiper>
                   </div>
@@ -87,14 +89,9 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Zoom } from "swiper/modules";
 import { useImageStore } from "@/stores/imageStore";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/zoom";
+
 
 const store = useImageStore();
 
-const modules = [Navigation, Zoom];
 </script>
