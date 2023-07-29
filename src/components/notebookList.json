@@ -306,7 +306,7 @@
         "price": 51500
       },
       {
-        "id": "F17-2",
+        "id": "F17/2",
         "image": ["F17-2"],
         "title": "Heros طلقی",
         "perCarton": 82,
@@ -389,14 +389,14 @@
         "price": 59500
       },
       {
-        "id": "M25-5",
+        "id": "M25/5",
         "image": ["M25-5"],
         "title": "Pony طلقی",
         "perCarton": 68,
         "price": 59500
       },
       {
-        "id": "M34-2",
+        "id": "M34/2",
         "image": ["M34-2"],
         "title": "Dream طلقی",
         "perCarton": 68,
@@ -459,7 +459,7 @@
         "price": 59500
       },
       {
-        "id": "P50-2",
+        "id": "P50/2",
         "image": ["P50-2", "P50-2--2"],
         "title": "نقاشی طلقی",
         "perCarton": 64,
@@ -473,7 +473,7 @@
         "price": 59500
       },
       {
-        "id": "P52-2",
+        "id": "P52/2",
         "image": ["P52-2"],
         "title": "دو خط انگلیسی طلقی",
         "perCarton": 64,
@@ -493,7 +493,7 @@
     "id": "100-sheets",
     "items": [
       {
-        "id": "A45-2",
+        "id": "A45/2",
         "image": ["A45-2"],
         "title": "کلاسیک طلقی",
         "perCarton": 54,
@@ -503,11 +503,11 @@
         "id": "A45",
         "image": ["A45"],
         "title": "کلاسیک طلقی",
-        "perCarton": 54,
+        "perCarton": 52,
         "price": 69500
       },
       {
-        "id": "A29-2",
+        "id": "A29/2",
         "image": ["A29-2"],
         "title": "Gravity طلقی",
         "perCarton": 54,
@@ -517,7 +517,7 @@
         "id": "A29",
         "image": ["A29"],
         "title": "Gravity طلقی",
-        "perCarton": 54,
+        "perCarton": 52,
         "price": 69500
       },
       {
@@ -545,7 +545,7 @@
         "id": "A26",
         "image": ["A26"],
         "title": "بوگوریا طلقی",
-        "perCarton": 54,
+        "perCarton": 52,
         "price": 69500
       },
       {
@@ -605,10 +605,10 @@
         "price": 69500
       },
       {
-        "id": "W54-2",
+        "id": "W54/2",
         "image": ["W54-2"],
         "title": "دو خط انگلیسی طلقی",
-        "perCarton": 54,
+        "perCarton": 52,
         "price": 69500
       },
       {
@@ -616,7 +616,160 @@
         "image": ["A38", "A38--2"],
         "title": "دیزنی Kids طلقی (حاشیه دار عروسکی)",
         "perCarton": 54,
-        "price": 69500
+        "price": 79500
+      },
+
+      {
+        "id": "A42/2",
+        "image": ["A42-2"],
+        "title": "جلد سازی",
+        "perCarton": 42,
+        "price": 74500
+      },
+      {
+        "id": "A42",
+        "image": ["A42"],
+        "title": "Etude جلد سازی",
+        "perCarton": 42,
+        "price": 74500
+      },
+      {
+        "id": "A43",
+        "image": ["A43", "A43--2"],
+        "title": "کلاسیک آبرنگی جلد سازی",
+        "perCarton": 42,
+        "price": 74500
+      },
+      {
+        "id": "A40/2",
+        "image": ["A40-2"],
+        "title": "ته دوخت جلد سازی",
+        "perCarton": 40,
+        "price": 74500
+      },
+      {
+        "id": "A40",
+        "image": ["A40"],
+        "title": "ته دوخت جلد سازی",
+        "perCarton": 40,
+        "price": 74500
+      },
+      {
+        "id": "H66",
+        "image": ["H66"],
+        "title": "کلاسور ۲۶ حلقه کلاسیک",
+        "perCarton": 20,
+        "price": 165000
+      },
+      {
+        "id": "H61",
+        "image": ["H61"],
+        "title": "کلاسور ۲۶ حلقه ART",
+        "perCarton": 20,
+        "price": 165000
+      }
+    ]
+  },
+  {
+    "title": "۱۵۰ برگ",
+    "id": "150-sheets",
+    "items": [
+      {
+        "id": "Q42",
+        "image": ["Q42", "Q42--2"],
+        "title": "کرافت طلقی",
+        "perCarton": 36,
+        "price": 101500
+      }
+    ]
+  },
+  {
+    "title": "۲۰۰ برگ",
+    "id": "200-sheets",
+    "items": [
+      {
+        "id": "D47/2",
+        "image": ["D47-2"],
+        "title": "ته دوخت جلد سازی",
+        "perCarton": 24,
+        "price": 128500
+      },
+      {
+        "id": "D47",
+        "image": ["D47"],
+        "title": "ته دوخت جلد سازی",
+        "perCarton": 24,
+        "price": 128500
+      },
+      {
+        "id": "D49/2",
+        "image": ["D49-2"],
+        "title": "جلد سازی",
+        "perCarton": 24,
+        "price": 128500
+      },
+      {
+        "id": "D49",
+        "image": ["D49"],
+        "title": "جلد سازی",
+        "perCarton": 24,
+        "price": 128500
+      },
+      {
+        "id": "D50",
+        "image": ["D50"],
+        "title": "آبرنگی طلقی",
+        "perCarton": 26,
+        "price": 123500
+      },
+      {
+        "id": "D45",
+        "image": ["D45"],
+        "title": "Royal طلقی",
+        "perCarton": 26,
+        "price": 123500
+      },
+      {
+        "id": "D48",
+        "image": ["D48"],
+        "title": "کلاسیک طلقی",
+        "perCarton": 26,
+        "price": 123500
+      },
+      {
+        "id": "H65",
+        "image": ["H65"],
+        "title": "کلاسور ۲۰ حلقه A5",
+        "perCarton": 26,
+        "price": 185000
+      },
+      {
+        "id": "H64",
+        "image": ["H64"],
+        "title": "کلاسور ۲۶ حلقه کلاسیک",
+        "perCarton": 14,
+        "price": 247000
+      },
+      {
+        "id": "H63",
+        "image": ["H63"],
+        "title": "کلاسور ۲۶ حلقه ART",
+        "perCarton": 14,
+        "price": 247000
+      },
+      {
+        "id": "H62",
+        "image": ["H62"],
+        "title": "کلاسور ۲۶ حلقه کلاسیک",
+        "perCarton": 14,
+        "price": 247000
+      },
+      {
+        "id": "H60",
+        "image": ["H60"],
+        "title": "کلاسور ۲۶ حلقه ایزابلا",
+        "perCarton": 14,
+        "price": 247000
       }
     ]
   }
