@@ -378,7 +378,7 @@
         "id": "M32",
         "image": ["M32"],
         "title": "Booby طلقی",
-        "perCarton": 68,
+        "perCarton": 64,
         "price": 59500
       },
       {
@@ -406,7 +406,7 @@
         "id": "M34",
         "image": ["M34"],
         "title": "Dream طلقی",
-        "perCarton": 68,
+        "perCarton": 64,
         "price": 59500
       },
       {
@@ -462,7 +462,7 @@
         "id": "P50-2",
         "image": ["P50-2", "P50-2--2"],
         "title": "نقاشی طلقی",
-        "perCarton": 68,
+        "perCarton": 64,
         "price": 59500
       },
       {
@@ -476,7 +476,7 @@
         "id": "P52-2",
         "image": ["P52-2"],
         "title": "دو خط انگلیسی طلقی",
-        "perCarton": 68,
+        "perCarton": 64,
         "price": 59500
       },
       {
@@ -484,7 +484,7 @@
         "image": ["M41", "Z26--2"],
         "title": "دیزنی Kids طلقی (حاشیه دار عروسکی)",
         "perCarton": 68,
-        "price": 59500
+        "price": 69500
       }
     ]
   },
@@ -493,11 +493,130 @@
     "id": "100-sheets",
     "items": [
       {
-        "id": "F14",
-        "image": ["F14"],
-        "title": "فانتزی طلقی",
-        "perCarton": 84,
-        "price": 51500
+        "id": "A45-2",
+        "image": ["A45-2"],
+        "title": "کلاسیک طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A45",
+        "image": ["A45"],
+        "title": "کلاسیک طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A29-2",
+        "image": ["A29-2"],
+        "title": "Gravity طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A29",
+        "image": ["A29"],
+        "title": "Gravity طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A33",
+        "image": ["A33", "A33--2"],
+        "title": "رنگی طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A37",
+        "image": ["A37", "A37--2"],
+        "title": "دیزنی Anime طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A30",
+        "image": ["A30", "A30--2"],
+        "title": "Sketch Art طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A26",
+        "image": ["A26"],
+        "title": "بوگوریا طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A35",
+        "image": ["A35"],
+        "title": "BTS طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A32",
+        "image": ["A32"],
+        "title": "Heros طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A41",
+        "image": ["A41"],
+        "title": "رباتیک طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A46",
+        "image": ["A46", "A46--2"],
+        "title": "B & W طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A28",
+        "image": ["A28"],
+        "title": "Royal طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A27",
+        "image": ["A27"],
+        "title": "Convers طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A34",
+        "image": ["A34", "A34--2"],
+        "title": "فوتبالی طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A47",
+        "image": ["A47"],
+        "title": "دو خط انگلیسی طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "W54-2",
+        "image": ["W54-2"],
+        "title": "دو خط انگلیسی طلقی",
+        "perCarton": 54,
+        "price": 69500
+      },
+      {
+        "id": "A38",
+        "image": ["A38", "A38--2"],
+        "title": "دیزنی Kids طلقی (حاشیه دار عروسکی)",
+        "perCarton": 54,
+        "price": 69500
       }
     ]
   }
