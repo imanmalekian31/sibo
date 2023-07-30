@@ -12,7 +12,7 @@
           ناموجود
         </div>
         <img
-          :src="`/notebook/thumbnail/${image[0]}.webp`"
+          :src="getImageUrl(`${image[0]}.webp`)"
           :class="['menu-item-image', outOfStock && 'opacity-40']"
           loading="lazy"
         />
@@ -130,6 +130,10 @@ defineProps({
 
 const previewStore = previewImageStore();
 const ordersStore = useOrdersStore();
+
+const getImageUrl = (name) => {
+  return new URL(`../assets/images/thumbnail/${name}`, import.meta.url);
+};
 </script>
 
 <style>

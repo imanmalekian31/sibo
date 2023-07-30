@@ -49,7 +49,7 @@
                     >
                       <swiper-slide v-for="image in previewStore.images" :key="image">
                         <div class="swiper-zoom-container">
-                          <img :src="`/notebook/high-quality/${image}.png`" />
+                          <img :src="getImageUrl(`${image}.png`)" />
                         </div>
                       </swiper-slide>
                     </swiper>
@@ -101,4 +101,8 @@ import { previewImageStore } from "@/stores/previewStore";
 const previewStore = previewImageStore();
 
 const modules = [Navigation, Zoom];
+
+const getImageUrl = (name) => {
+  return new URL(`../assets/images/high-quality/${name}`, import.meta.url);
+};
 </script>

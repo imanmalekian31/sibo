@@ -22,6 +22,7 @@
     >
       <swiper-slide
         class="flex flex-col items-center justify-center bg-lightGold rounded-md h-5/6 py-2"
+        :class="currIndex === index && 'bg-yellow-600'"
         v-for="(category, index) in notebookList"
         :key="category.id"
         @click="updateCategory(category, index)"

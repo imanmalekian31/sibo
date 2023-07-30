@@ -12,9 +12,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      workbox: {
-        globPatterns: ['**/*.{png,webp}']
-      },
+      includeAssets:['src/assets/images/**/*'],
       manifest: {
         name: "Sibo",
         short_name: "Sibo",
