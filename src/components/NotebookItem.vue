@@ -3,7 +3,7 @@
     <div>
       <div
         class="menu-item-image-container z-10"
-        @click="store.setImage(image, title, id)"
+        @click="previewStore.openPreview(image, title, id)"
       >
         <div
           v-if="outOfStock"
@@ -100,7 +100,7 @@
 </template>
 
 <script setup>
-import { useImageStore } from "@/stores/imageStore";
+import { previewImageStore } from "@/stores/previewStore";
 import { useOrdersStore } from "@/stores/ordersStore";
 
 defineProps({
@@ -127,7 +127,7 @@ defineProps({
   outOfStock: Boolean,
 });
 
-const store = useImageStore();
+const previewStore = previewImageStore();
 const ordersStore = useOrdersStore();
 </script>
 

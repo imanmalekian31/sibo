@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bg-gold shadow-md w-full right-0 top-0 z-50">
+  <div class="fixed bg-gold shadow-md w-full right-0 top-0 z-30">
     <div class="absolute left-3 top-3 cursor-pointer" @click="ordersStore.openModal">
       <span
         v-if="ordersStore.orders.length"

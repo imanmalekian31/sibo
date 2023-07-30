@@ -1,6 +1,6 @@
 <template>
-  <TransitionRoot as="template" :show="store.openModal">
-    <Dialog as="div" class="relative z-10" @close="store.closeModal">
+  <TransitionRoot as="template" :show="previewStore.openModal">
+    <Dialog as="div" class="relative z-40" @close="previewStore.closePreview">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -37,7 +37,7 @@
                     as="h3"
                     class="text-base font-semibold leading-6 text-gray-900"
                   >
-                    {{ store.imageTitle }}
+                    {{ previewStore.title }}
                   </DialogTitle>
                   <div class="mt-2">
                     <swiper
@@ -47,7 +47,7 @@
                       loop
                       :modules="modules"
                     >
-                      <swiper-slide v-for="image in store.image" :key="image">
+                      <swiper-slide v-for="image in previewStore.images" :key="image">
                         <div class="swiper-zoom-container">
                           <img :src="`/notebook/high-quality/${image}.png`" />
                         </div>
@@ -59,7 +59,7 @@
                     class="text-base font-semibold leading-6 text-gray-900 mt-2 font-sans"
                   >
                     کد:
-                    {{ store.notebookId }}
+                    {{ previewStore.id }}
                   </DialogTitle>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                 <button
                   type="button"
                   class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  @click="store.closeModal"
+                  @click="previewStore.closePreview"
                 >
                   بازگشت
                 </button>
@@ -91,12 +91,14 @@ import {
 } from "@headlessui/vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Zoom } from "swiper/modules";
-import { useImageStore } from "@/stores/imageStore";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/zoom";
 
-const store = useImageStore();
+import { previewImageStore } from "@/stores/previewStore";
+
+const previewStore = previewImageStore();
 
 const modules = [Navigation, Zoom];
 </script>

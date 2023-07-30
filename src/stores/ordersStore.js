@@ -10,7 +10,7 @@ export const useOrdersStore = defineStore("order", () => {
     orderModal.value = false;
   }
 
-  const orders = ref([]);
+  const orders = ref(JSON.parse(localStorage.orders || '[]'));
 
   function addNewOrder(newOrder) {
     const prevOrder = orders.value.find((order) => order.id === newOrder.id);
@@ -19,6 +19,8 @@ export const useOrdersStore = defineStore("order", () => {
     } else {
       orders.value.push({ ...newOrder, count: 1 });
     }
+
+    localStorage.orders = JSON.stringify(orders.value)
   }
   function removeOrder(orderId){
     const prevOrder = orders.value.find((order) => order.id === orderId);
@@ -27,6 +29,8 @@ export const useOrdersStore = defineStore("order", () => {
     }else {
         orders.value = orders.value.filter((order) => order.id !== orderId)
     }
+
+    localStorage.orders = JSON.stringify(orders.value)
   }
   function countOrder(orderId) {
     return (
