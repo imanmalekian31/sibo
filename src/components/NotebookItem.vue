@@ -14,6 +14,7 @@
         <img
           :src="`/notebook/thumbnail/${image[0]}.webp`"
           :class="['menu-item-image', outOfStock && 'opacity-40']"
+          loading="lazy"
         />
       </div>
       <div :class="['menu-item-details', outOfStock && 'opacity-40']">
