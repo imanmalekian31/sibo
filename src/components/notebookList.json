@@ -755,6 +755,48 @@
         "title": "رحلی جلد سازی",
         "perCarton": 38,
         "price": 124500
+      },
+      {
+        "id": "W54",
+        "image": ["W54"],
+        "title": "ته چسب کلاسیک طلقی",
+        "perCarton": 60,
+        "price": 56000
+      },
+      {
+        "id": "W55",
+        "image": ["W55"],
+        "title": "ته چسب فانتزی طلقی",
+        "perCarton": 60,
+        "price": 56000
+      },
+      {
+        "id": "V69/2",
+        "image": ["V69-2"],
+        "title": "یادداشت 1/8 طلقی",
+        "perCarton": 96,
+        "price": 47500
+      },
+      {
+        "id": "V68/2",
+        "image": ["V68-2"],
+        "title": "یادداشت 1/16 طلقی",
+        "perCarton": 184,
+        "price": 24500
+      },
+      {
+        "id": "V75",
+        "image": ["V75"],
+        "title": "یادداشت مهندسی طلقی",
+        "perCarton": 84,
+        "price": 58500
+      },
+      {
+        "id": "V71",
+        "image": ["V71"],
+        "title": "یادداشت 1/8 جلد سازی",
+        "perCarton": 92,
+        "price": 49500
       }
     ]
   },
@@ -873,6 +915,62 @@
         "title": "رحلی جلد سازی",
         "perCarton": 22,
         "price": 185500
+      },
+      {
+        "id": "V73",
+        "image": ["V73"],
+        "title": "یادداشت مربع دیزنی جلد سازی",
+        "perCarton": 96,
+        "price": 57500
+      },
+      {
+        "id": "V74",
+        "image": ["V74"],
+        "title": "یادداشت Bullet Journal جلد سازی",
+        "perCarton": 52,
+        "price": 68500
+      },
+      {
+        "id": "V72",
+        "image": ["V72"],
+        "title": "یادداشت 1/8 جلد سازی فنر از بغل",
+        "perCarton": 54,
+        "price": 78500
+      },
+      {
+        "id": "V79-2",
+        "image": ["V79-2"],
+        "title": "یادداشت پاقپانی جلد سازی",
+        "perCarton": 52,
+        "price": 78500
+      },
+      {
+        "id": "R6",
+        "image": ["R6&R5"],
+        "title": "یادداشت To Do List",
+        "perCarton": 52,
+        "price": 62500
+      },
+      {
+        "id": "R5",
+        "image": ["R6&R5"],
+        "title": "یادداشت To Do List",
+        "perCarton": 96,
+        "price": 48500
+      },
+      {
+        "id": "R1",
+        "image": ["R1"],
+        "title": "جلد سازی Bullet Journal رنگی",
+        "perCarton": 40,
+        "price": 155000
+      },
+      {
+        "id": "R2",
+        "image": ["R2"],
+        "title": "جلد سازی Bullet Journal کلاسیک",
+        "perCarton": 40,
+        "price": 155000
       }
     ]
   },
@@ -893,6 +991,75 @@
         "title": "۴ حلقه دیزنی",
         "perCarton": 24,
         "price": 78000
+      }
+    ]
+  },
+  {
+    "title": "فولدر کش‌دار",
+    "id": "band-folder",
+    "items": [
+      {
+        "id": "R4",
+        "image": ["R4"],
+        "title": "فولدر کش‌دار",
+        "perCarton": 12,
+        "price": 125000,
+        "noTitle": true
+      },
+      {
+        "id": "R3",
+        "image": ["R3", "R3--2"],
+        "title": "ست فولدر کش‌دار (۶۰ برگ نقاشی رحلی جلدسازی + پادداشت جلدسازی)",
+        "perCarton": 12,
+        "price": 245000,
+        "noTitle": true
+      }
+    ]
+  },
+  {
+    "title": "تخته شاسی",
+    "id": "clipboard",
+    "items": [
+      {
+        "id": "X67",
+        "image": ["X67"],
+        "title": "کلاسیک A3",
+        "perCarton": 56,
+        "price": 58000
+      },
+      {
+        "id": "X66",
+        "image": ["X66"],
+        "title": "دیزنی A4",
+        "perCarton": 60,
+        "price": 39700
+      },
+      {
+        "id": "X65",
+        "image": ["X65", "X65--2"],
+        "title": "کلاسیک A4",
+        "perCarton": 60,
+        "price": 39700
+      }
+    ]
+  },
+  {
+    "title": "دفتر طراحی",
+    "id": "sketching",
+    "items": [
+      {
+        "id": "U64",
+        "image": ["U64"],
+        "title": "۴۰ برگ مومی دار A4",
+        "perCarton": 50,
+        "price": 105500
+      },
+      {
+        "id": "U64/2",
+        "image": ["U64-2"],
+        "title": "۴۰ برگ مومی دار A3",
+        "perCarton": 25,
+        "price": 159500
       }
     ]
   }

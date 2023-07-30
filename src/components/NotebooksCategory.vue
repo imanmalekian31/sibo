@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
-      <NotebookItem v-for="item in items" v-bind="{...item , title: `${title} ${item.title}`}" />
+      <NotebookItem v-for="item in items" v-bind="{...item , title: `${item.noTitle ? '' : title} ${item.title}`}" />
     </div>
   </div>
 </template>
