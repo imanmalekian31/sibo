@@ -37,7 +37,10 @@
                   >
                     لیست سفارش ها
                   </DialogTitle>
-                  <div class="mt-2 overflow-auto" v-if="ordersStore.orders.length">
+                  <div
+                    class="mt-2 overflow-auto"
+                    v-if="ordersStore.orders.length"
+                  >
                     <SwitchGroup as="div" class="flex items-center my-4 mr-1">
                       <Switch
                         v-model="showTitle"
@@ -90,7 +93,9 @@
                           <td v-if="showTitle" class="border border-slate-300">
                             {{ item.title }}
                           </td>
-                          <td class="border border-slate-300 font-sans">{{ item.id }}</td>
+                          <td class="border border-slate-300 font-sans">
+                            {{ item.id }}
+                          </td>
                           <td class="border border-slate-300">
                             {{ item.perCarton }}
                           </td>
@@ -144,7 +149,26 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-5 sm:mt-6">
+              <p class="text-right mt-5">
+                برای ثبت سفارش با شماره های زیر تماس بگیرید:
+              </p>
+              <div class="grid grid-cols-2 md:grid-cols-5 gap-2 mt-2">
+                <a
+                  type="button"
+                  class="rounded-md text-center bg-indigo-50 px-2.5 py-1.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+                  href="tel:02155632731"
+                >
+                  55632731
+                </a>
+                <a
+                  type="button"
+                  class="rounded-md text-center bg-indigo-50 px-2.5 py-1.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+                  href="tel:09125271642"
+                >
+                  09125271642
+                </a>
+              </div>
+              <div class="mt-2">
                 <button
                   type="button"
                   class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
