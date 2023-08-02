@@ -271,8 +271,7 @@
         "image": ["F19-2"],
         "title": "Pony طلقی",
         "perCarton": 84,
-        "price": 51500,
-        "outOfStock": true
+        "price": 51500
       },
       {
         "id": "F19",
@@ -417,16 +416,14 @@
         "image": ["M38", "M38--2"],
         "title": "Kinder طلقی",
         "perCarton": 68,
-        "price": 59500,
-        "outOfStock": true
+        "price": 59500
       },
       {
         "id": "M33",
         "image": ["M33", "M33--2"],
         "title": "رنگی طلقی",
         "perCarton": 68,
-        "price": 59500,
-        "outOfStock": true
+        "price": 59500
       },
       {
         "id": "M39",
@@ -624,24 +621,21 @@
         "image": ["A33", "A33--2"],
         "title": "رنگی طلقی",
         "perCarton": 54,
-        "price": 69500,
-        "outOfStock": true
+        "price": 69500
       },
       {
         "id": "A37",
         "image": ["A37", "A37--2"],
         "title": "دیزنی Anime طلقی",
         "perCarton": 54,
-        "price": 69500,
-        "outOfStock": true
+        "price": 69500
       },
       {
         "id": "A30",
         "image": ["A30", "A30--2"],
         "title": "Sketch Art طلقی",
         "perCarton": 54,
-        "price": 69500,
-        "outOfStock": true
+        "price": 69500
       },
       {
         "id": "A26",
