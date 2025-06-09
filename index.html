@@ -1,13 +1,1311 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>سیبو</title>
+    <title>فرم ثبت سفارش سیبو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: #f5f5f4; /* Warm Neutral: Stone 100 */
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #e7e5e4; /* Stone 200 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a8a29e; /* Stone 400 */
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #78716c; /* Stone 500 */
+      }
+    </style>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+  <body class="text-stone-800">
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+      <header class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-stone-700">
+          فرم ثبت سفارش محصولات سیبو
+        </h1>
+        <p class="text-lg text-stone-500 mt-2">سال ۱۴۰۴ - ۲۰۲۵</p>
+      </header>
+
+      <section
+        id="customer-info"
+        class="bg-white p-6 rounded-2xl shadow-md mb-8"
+      >
+        <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-stone-700">
+          اطلاعات خریدار
+        </h2>
+        <p class="text-stone-600 mb-6">
+          لطفاً اطلاعات زیر را برای ثبت سفارش تکمیل کنید. این اطلاعات در فایل
+          اکسل خروجی ثبت خواهد شد.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label
+              for="customerName"
+              class="block text-sm font-medium text-stone-600 mb-1"
+              >نام و نام خانوادگی</label
+            >
+            <input
+              type="text"
+              id="customerName"
+              class="w-full p-3 bg-stone-100 border border-stone-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition"
+            />
+          </div>
+          <div>
+            <label
+              for="storeName"
+              class="block text-sm font-medium text-stone-600 mb-1"
+              >نام فروشگاه</label
+            >
+            <input
+              type="text"
+              id="storeName"
+              class="w-full p-3 bg-stone-100 border border-stone-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition"
+            />
+          </div>
+          <div>
+            <label
+              for="phoneNumber"
+              class="block text-sm font-medium text-stone-600 mb-1"
+              >شماره همراه</label
+            >
+            <input
+              type="tel"
+              id="phoneNumber"
+              class="w-full p-3 bg-stone-100 border border-stone-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition"
+            />
+          </div>
+        </div>
+      </section>
+
+      <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div
+          id="product-list-section"
+          class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-md"
+        >
+          <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-stone-700">
+            لیست محصولات
+          </h2>
+          <p class="text-stone-600 mb-4">
+            در این بخش می‌توانید محصولات مورد نظر خود را جستجو کرده و تعداد
+            دلخواه را برای افزودن به سبد خرید وارد کنید.
+          </p>
+          <div class="mb-6">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="جستجو بر اساس نام یا کد کالا..."
+              class="w-full p-3 bg-stone-100 border border-stone-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition"
+            />
+          </div>
+          <div
+            id="productList"
+            class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[800px] overflow-y-auto pr-2"
+          ></div>
+        </div>
+
+        <aside
+          id="order-summary-section"
+          class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-md sticky top-8 self-start"
+        >
+          <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-stone-700">
+            خلاصه سفارش
+          </h2>
+          <p class="text-stone-600 mb-4">
+            سبد خرید شما به صورت زنده به‌روزرسانی می‌شود.
+          </p>
+          <div id="orderSummary" class="mb-4 max-h-80 overflow-y-auto pr-2">
+            <p class="text-stone-500 text-center">سبد خرید شما خالی است.</p>
+          </div>
+          <div class="border-t pt-4">
+            <div
+              class="flex justify-between items-center font-bold text-xl mb-4"
+            >
+              <span>جمع کل:</span>
+              <span id="totalPrice">۰ ریال</span>
+            </div>
+            <button
+              id="generateOrder"
+              class="w-full bg-amber-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-amber-600 transition-all shadow hover:shadow-lg mt-6"
+            >
+              دانلود فایل اکسل سفارش
+            </button>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const productData = [
+          {
+            code: "Z 1/2",
+            name: "۴۰ برگ فانتزی طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 63180000,
+          },
+          {
+            code: "Z 20/2",
+            name: "۴۰ برگ Angel طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 65880000,
+          },
+          {
+            code: "Z 20",
+            name: "۴۰ برگ Angel طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 63180000,
+          },
+          {
+            code: "Z 22",
+            name: "۴۰ برگ Toon Blast طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 65880000,
+          },
+          {
+            code: "Z 25/5",
+            name: "۴۰ برگ Lady Bug طلقی",
+            cartonSize: "۱۱۲ جلد",
+            price: 61600000,
+          },
+          {
+            code: "Z 24",
+            name: "۴۰ برگ Paw Patrol طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 65880000,
+          },
+          {
+            code: "Z 24/2",
+            name: "۴۰ برگ Paw Patrol طلقی",
+            cartonSize: "۱۰۸ جلد",
+            price: 65880000,
+          },
+          {
+            code: "Z 26",
+            name: "۴۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۱۰۸ جلد",
+            price: 73440000,
+          },
+          {
+            code: "B 13",
+            name: "۵۰ برگ Pony طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 4/2",
+            name: "۵۰ برگ کلاسیک طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 4",
+            name: "۵۰ برگ کلاسیک طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 59800000,
+          },
+          {
+            code: "B 2/2",
+            name: "۵۰ برگ فانتزی طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 2",
+            name: "۵۰ برگ فانتزی طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 14/2",
+            name: "۵۰ برگ Car Tuning طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 14",
+            name: "۵۰ برگ Car Tuning طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 3",
+            name: "۵۰ برگ Labubu طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 69000000,
+          },
+          {
+            code: "B 6",
+            name: "۵۰ برگ نقاشی طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 6/5",
+            name: "۵۰ برگ نقاشی کلاسیک طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 9/2",
+            name: "۵۰ برگ سه خط طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 16/2",
+            name: "۵۰ برگ چهار خط طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 7/2",
+            name: "۵۰ برگ شطرنجی طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 8/5",
+            name: "۵۰ برگ دو خط انگلیسی کلاسیک طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 8",
+            name: "۵۰ برگ دو خط انگلیسی کلاسیک طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 8/2",
+            name: "۵۰ برگ دو خط انگلیسی فانتزی طلقی",
+            cartonSize: "۹۲ جلد",
+            price: 61640000,
+          },
+          {
+            code: "B 17",
+            name: "۵۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۹۲ جلد",
+            price: 69000000,
+          },
+          {
+            code: "F 18",
+            name: "۶۰ برگ Girls Life طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 31",
+            name: "۶۰ برگ Minecraft طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 14/2",
+            name: "۶۰ برگ فانتزی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 59040000,
+          },
+          {
+            code: "F 28",
+            name: "۶۰ برگ Kuromi طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 64000000,
+          },
+          {
+            code: "F 22",
+            name: "۶۰ برگ Hello Kitty طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 57600000,
+          },
+          {
+            code: "F 26",
+            name: "۶۰ برگ Lady Bug طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 54400000,
+          },
+          {
+            code: "F 19/2",
+            name: "۶۰ برگ Pony طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 19",
+            name: "۶۰ برگ Pony طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 23/2",
+            name: "۶۰ برگ Anime طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 23",
+            name: "۶۰ برگ Anime طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 15",
+            name: "۶۰ برگ Honey طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 11/2",
+            name: "۶۰ برگ کلاسیک طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 54400000,
+          },
+          {
+            code: "F 11",
+            name: "۶۰ برگ کلاسیک طلقی",
+            cartonSize: "۸۴ جلد",
+            price: 54400000,
+          },
+          {
+            code: "F 21",
+            name: "۶۰ برگ Paw Patrol طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 13/2",
+            name: "۶۰ برگ دیزنی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 10",
+            name: "۶۰ برگ رنگی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 17",
+            name: "۶۰ برگ Herose طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 20",
+            name: "۶۰ برگ رباتیک طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 12/2",
+            name: "۶۰ برگ Sketch Art طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 12",
+            name: "۶۰ برگ Sketch Art طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 29",
+            name: "۶۰ برگ فوتبالی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 68000000,
+          },
+          {
+            code: "F 16/2",
+            name: "۶۰ برگ نقاشی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 16",
+            name: "۶۰ برگ نقاشی طلقی",
+            cartonSize: "۸۰ جلد",
+            price: 60000000,
+          },
+          {
+            code: "F 30",
+            name: "۶۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۸۰ جلد",
+            price: 68000000,
+          },
+          {
+            code: "M 32",
+            name: "۸۰ برگ Digital طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 38/2",
+            name: "۸۰ برگ Kinder طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 54400000,
+          },
+          {
+            code: "M 33",
+            name: "۸۰ برگ رنگی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 33/2",
+            name: "۸۰ برگ رنگی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 23",
+            name: "۸۰ برگ فانتزی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 54400000,
+          },
+          {
+            code: "M 30",
+            name: "۸۰ برگ Welcome طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 54400000,
+          },
+          {
+            code: "M 25/5",
+            name: "۸۰ برگ Pony طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 37",
+            name: "۸۰ برگ Kuromi طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 60080000,
+          },
+          {
+            code: "B 26/2",
+            name: "۸۰ برگ Life Style طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 31/2",
+            name: "۸۰ برگ Modern طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 31",
+            name: "۸۰ برگ Modern طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 29/2",
+            name: "۸۰ برگ Herose طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 29",
+            name: "۸۰ برگ Herose طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 34",
+            name: "۸۰ برگ Dream طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 35",
+            name: "۸۰ برگ Labubu طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 60080000,
+          },
+          {
+            code: "M 40/2",
+            name: "۸۰ برگ Anime طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 40",
+            name: "۸۰ برگ Anime طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 36",
+            name: "۸۰ برگ فوتبالی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 60080000,
+          },
+          {
+            code: "M 25",
+            name: "۸۰ برگ دو خط انگلیسی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 24/2",
+            name: "۸۰ برگ نقاشی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 24",
+            name: "۸۰ برگ نقاشی طلقی",
+            cartonSize: "۶۴ جلد",
+            price: 55680000,
+          },
+          {
+            code: "M 41/2",
+            name: "۸۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۶۴ جلد",
+            price: 62080000,
+          },
+          {
+            code: "M 41",
+            name: "۸۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۶۴ جلد",
+            price: 62080000,
+          },
+          {
+            code: "A 45/2",
+            name: "۱۰۰ برگ کلاسیک طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 45",
+            name: "۱۰۰ برگ کلاسیک طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 33",
+            name: "۱۰۰ برگ رنگی طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 33/2",
+            name: "۱۰۰ برگ رنگی طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 37",
+            name: "۱۰۰ برگ Anime طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 37/2",
+            name: "۱۰۰ برگ Anime طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 50960000,
+          },
+          {
+            code: "A 46",
+            name: "۱۰۰ برگ &BW طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 30",
+            name: "۱۰۰ برگ Sketch Art طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 30/2",
+            name: "۱۰۰ برگ Sketch Art طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 31",
+            name: "۱۰۰ برگ فانتزی طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 32",
+            name: "۱۰۰ برگ Herose طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 41/2",
+            name: "۱۰۰ برگ رباتیک طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 41",
+            name: "۱۰۰ برگ رباتیک طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 29",
+            name: "۱۰۰ برگ Kuromi طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 59800000,
+          },
+          {
+            code: "A 28/2",
+            name: "۱۰۰ برگ Royal طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 28",
+            name: "۱۰۰ برگ Royal طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 26",
+            name: "۱۰۰ برگ Girls طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 34",
+            name: "۱۰۰ برگ فوتبالی طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 59800000,
+          },
+          {
+            code: "A 47",
+            name: "۱۰۰ برگ دو خط انگلیسی طلقی",
+            cartonSize: "۵۲ جلد",
+            price: 53820000,
+          },
+          {
+            code: "A 38/2",
+            name: "۱۰۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۵۲ جلد",
+            price: 59800000,
+          },
+          {
+            code: "A 38",
+            name: "۱۰۰ برگ دیزنی Kids طلقی (متن حاشیه عروسکی)",
+            cartonSize: "۵۲ جلد",
+            price: 59800000,
+          },
+          {
+            code: "Q 42/2",
+            name: "۱۵۰ برگ کلاسیک طلقی",
+            cartonSize: "۳۶ جلد",
+            price: 54540000,
+          },
+          {
+            code: "Q 43",
+            name: "۱۵۰ برگ فانتزی طلقی",
+            cartonSize: "۳۶ جلد",
+            price: 54540000,
+          },
+          {
+            code: "A 42",
+            name: "۱۰۰ برگ Etude جلد سازی",
+            cartonSize: "۴۲ جلد",
+            price: 48300000,
+          },
+          {
+            code: "A 43",
+            name: "۱۰۰ برگ آبرنگی جلد سازی",
+            cartonSize: "۴۲ جلد",
+            price: 52500000,
+          },
+          {
+            code: "A 44",
+            name: "۱۰۰ برگ دیزنی جلد سازی",
+            cartonSize: "۴۲ جلد",
+            price: 48300000,
+          },
+          {
+            code: "A 40",
+            name: "۱۰۰ برگ ته دوخت جلد سازی",
+            cartonSize: "۴۰ جلد",
+            price: 50000000,
+          },
+          {
+            code: "D 47",
+            name: "۲۰۰ برگ ته دوخت جلد سازی",
+            cartonSize: "۲۴ جلد",
+            price: 46800000,
+          },
+          {
+            code: "D 49",
+            name: "۲۰۰ برگ جلد سازی",
+            cartonSize: "۲۴ جلد",
+            price: 46800000,
+          },
+          {
+            code: "D 50",
+            name: "۲۰۰ برگ آبرنگی طلقی",
+            cartonSize: "۲۶ جلد",
+            price: 47840000,
+          },
+          {
+            code: "D 50/2",
+            name: "۲۰۰ برگ آبرنگی طلقی",
+            cartonSize: "۲۶ جلد",
+            price: 45240000,
+          },
+          {
+            code: "D 45",
+            name: "۲۰۰ برگ Royal طلقی",
+            cartonSize: "۲۶ جلد",
+            price: 45240000,
+          },
+          {
+            code: "D 48",
+            name: "۲۰۰ برگ کلاسیک طلقی",
+            cartonSize: "۲۶ جلد",
+            price: 47840000,
+          },
+          {
+            code: "Η 65/2",
+            name: "۲۰۰ برگ کلاسور ۲۰ حلقه A5",
+            cartonSize: "۲۶ جلد",
+            price: 74100000,
+          },
+          {
+            code: "Η 65",
+            name: "۲۰۰ برگ کلاسور ۲۰ حلقه A5",
+            cartonSize: "۲۶ جلد",
+            price: 61100000,
+          },
+          {
+            code: "Η 60",
+            name: "۱۰۰ برگ کلاسور ۲۶ حلقه ART",
+            cartonSize: "۱۸ جلد",
+            price: 42300000,
+          },
+          {
+            code: "Η 61",
+            name: "۱۰۰ برگ کلاسور ۲۶ حلقه کلاسیک",
+            cartonSize: "۱۸ جلد",
+            price: 42300000,
+          },
+          {
+            code: "Η 66",
+            name: "۱۰۰ برگ کلاسور ۲۶ حلقه کلاسیک",
+            cartonSize: "۲۰ جلد",
+            price: 47000000,
+          },
+          {
+            code: "Η 63",
+            name: "۲۰۰ برگ کلاسور ۲۶ حلقه کلاسیک",
+            cartonSize: "۱۲ جلد",
+            price: 39000000,
+          },
+          {
+            code: "Η 62",
+            name: "۲۰۰ برگ کلاسور ۲۶ حلقه ART",
+            cartonSize: "۱۲ جلد",
+            price: 39000000,
+          },
+          {
+            code: "Η 68/2",
+            name: "کلر بوک ۴ حلقه دیزنی",
+            cartonSize: "۲۴ جلد",
+            price: 28800000,
+          },
+          {
+            code: "Η 67",
+            name: "کلر بوک ۴ حلقه کلاسیک",
+            cartonSize: "۲۴ جلد",
+            price: 28800000,
+          },
+          {
+            code: "AL 48",
+            name: "۱۰۰ برگ رحلی دیزنی طلقی",
+            cartonSize: "۴۴ جلد",
+            price: 77000000,
+          },
+          {
+            code: "AL 49/2",
+            name: "۱۰۰ برگ رحلی جلد سازی",
+            cartonSize: "۳۶ جلد",
+            price: 71640000,
+          },
+          {
+            code: "AL 49",
+            name: "۱۰۰ برگ رحلی جلد سازی",
+            cartonSize: "۳۶ جلد",
+            price: 71640000,
+          },
+          {
+            code: "AL 63",
+            name: "۲۰۰ برگ رحلی جلد سازی",
+            cartonSize: "۲۲ جلد",
+            price: 62920000,
+          },
+          {
+            code: "AL 63/2",
+            name: "۲۰۰ برگ رحلی جلد سازی",
+            cartonSize: "۲۲ جلد",
+            price: 62920000,
+          },
+          {
+            code: "S 56",
+            name: "۶۰ برگ رحلی نقاشی جلد سازی",
+            cartonSize: "۵۰ جلد",
+            price: 73000000,
+          },
+          {
+            code: "S 58",
+            name: "۸۰ برگ نقاشی سلطانی طلقی",
+            cartonSize: "۳۲ جلد",
+            price: 62400000,
+          },
+          {
+            code: "K 50",
+            name: "۴۰ برگ ته چسب کلاسیک طلقی",
+            cartonSize: "۱۲۶ عدد",
+            price: 56070000,
+          },
+          {
+            code: "K 52",
+            name: "۴۰ برگ ته چسب فانتزی طلقی",
+            cartonSize: "۱۲۶ عدد",
+            price: 56070000,
+          },
+          {
+            code: "K 51",
+            name: "۴۰ برگ ته چسب دیزنی طلقی",
+            cartonSize: "۱۲۶ جلد",
+            price: 56070000,
+          },
+          {
+            code: "P 52",
+            name: "۸۰ برگ ته چسب کلاسیک طلقی",
+            cartonSize: "۷۵ جلد",
+            price: 51000000,
+          },
+          {
+            code: "P 51",
+            name: "۸۰ برگ ته چسب فانتزی طلقی",
+            cartonSize: "۷۵ جلد",
+            price: 51000000,
+          },
+          {
+            code: "P 50",
+            name: "۸۰ برگ ته چسب دیزنی طلقی",
+            cartonSize: "۷۵ جلد",
+            price: 51000000,
+          },
+          {
+            code: "W 54",
+            name: "۱۰۰ برگ ته چسب کلاسیک طلقی",
+            cartonSize: "۶۰ جلد",
+            price: 48600000,
+          },
+          {
+            code: "W 55",
+            name: "۱۰۰ برگ ته چسب فانتزی طلقی",
+            cartonSize: "۶۰ جلد",
+            price: 48600000,
+          },
+          {
+            code: "V 69/2",
+            name: "۱۰۰ برگ یادداشت ۱/۸ طلقی",
+            cartonSize: "۹۶ جلد",
+            price: 65280000,
+          },
+          {
+            code: "V 68/2",
+            name: "۱۰۰ برگ یادداشت ۱/۱۶ طلقی",
+            cartonSize: "۱۷۲ جلد",
+            price: 84280000,
+          },
+          {
+            code: "V 76",
+            name: "۱۰۰ برگ یادداشت پالتویی طلقی متن تک خط",
+            cartonSize: "۱۷۶ جلد",
+            price: 132000000,
+          },
+          {
+            code: "V 75",
+            name: "۱۰۰ برگ یادداشت مهندسی طلقی متن تک خط",
+            cartonSize: "۸۴ جلد",
+            price: 69300000,
+          },
+          {
+            code: "V 73",
+            name: "۲۰۰ برگ یادداشت مربع دیزنی جلد سازی بدون خط",
+            cartonSize: "۹۶ جلد",
+            price: 62400000,
+          },
+          {
+            code: "V 77",
+            name: "۲۰۰ برگ یادداشت دیزنی جلد سازی 12×12 بدون خط",
+            cartonSize: "۵۲ جلد",
+            price: 33800000,
+          },
+          {
+            code: "V 74",
+            name: "۲۰۰ برگ یادداشت کلاسیک جلد سازی 12×12 بدون خط",
+            cartonSize: "۵۲ جلد",
+            price: 33800000,
+          },
+          {
+            code: "V 71",
+            name: "۱۰۰ برگ یادداشت ۱/۸ جلد سازی متن تک خط",
+            cartonSize: "۹۲ جلد",
+            price: 64400000,
+          },
+          {
+            code: "V 72",
+            name: "۲۰۰ برگ یادداشت ۱/۸ جلد سازی فنر از بغل تک خط",
+            cartonSize: "۵۴ جلد",
+            price: 52110000,
+          },
+          {
+            code: "V 97/2",
+            name: "۲۰۰ برگ یادداشت پاقپانی جلد سازی متن تک خط",
+            cartonSize: "۵۲ جلد",
+            price: 52110000,
+          },
+          {
+            code: "R 5",
+            name: "۲۰۰ برگ یادداشت جلد سازی 99 (متن نقطه چین)",
+            cartonSize: "۹۶ جلد",
+            price: 41760000,
+          },
+          {
+            code: "R 6",
+            name: "۲۰۰ برگ یادداشت جلد سازی 1212 (متن نقطه چین)",
+            cartonSize: "۵۲ جلد",
+            price: 29900000,
+          },
+          {
+            code: "R 1",
+            name: "۲۰۰ برگ جلد سازی Bullet Journal رنگی (متن نقطه چین)",
+            cartonSize: "۴۰ جلد",
+            price: 54000000,
+          },
+          {
+            code: "R 2",
+            name: "۲۰۰ برگ جلد سازی Bullet Journal کلاسیک متن نقطه چین",
+            cartonSize: "۴۰ جلد",
+            price: 54000000,
+          },
+          {
+            code: "R 4",
+            name: "فلدر کش دار",
+            cartonSize: "۱۲ جلد",
+            price: 15000000,
+          },
+          {
+            code: "R 3",
+            name: "ست فلدر کش دار",
+            cartonSize: "۱۲ جلد",
+            price: 29400000,
+          },
+          {
+            code: "X 67",
+            name: "تخته شاسی کلاسیک A3",
+            cartonSize: "۵۶ جلد",
+            price: 47600000,
+          },
+          {
+            code: "X 65",
+            name: "تخته شاسی کلاسیک A4",
+            cartonSize: "۶۰ جلد",
+            price: 35100000,
+          },
+          {
+            code: "X 66",
+            name: "تخته شاسی دیزنی A4",
+            cartonSize: "۶۰ جلد",
+            price: 35100000,
+          },
+          {
+            code: "U 64",
+            name: "دفتر طراحی ۴۰ برگ مومی دار A4",
+            cartonSize: "۵۰ جلد",
+            price: 77500000,
+          },
+          {
+            code: "U 64/2",
+            name: "دفتر طراحی ۴۰ برگ مومی دار A3",
+            cartonSize: "۲۵ جلد",
+            price: 58750000,
+          },
+          {
+            code: "C 5",
+            name: "یدک کلاسور ۴ حلقه ۱۰۰ برگ A4",
+            cartonSize: "۶۰ جلد",
+            price: 66000000,
+          },
+          {
+            code: "C 4",
+            name: "یدک کلاسور ۲۶ حلقه ۱۰۰ برگ A4 با دیوایدر",
+            cartonSize: "۵۰ جلد",
+            price: 48000000,
+          },
+          {
+            code: "C 6",
+            name: "یدک کلاسور ۲۰ حلقه ۱۰۰ برگ A5",
+            cartonSize: "۵۶ جلد",
+            price: 44800000,
+          },
+        ];
+
+        const productListEl = document.getElementById("productList");
+        const searchInputEl = document.getElementById("searchInput");
+        const orderSummaryEl = document.getElementById("orderSummary");
+        const totalPriceEl = document.getElementById("totalPrice");
+
+        let order = {};
+
+        const formatPrice = (price) =>
+          new Intl.NumberFormat("fa-IR").format(price) + " ریال";
+        const formatPriceForExcel = (price) =>
+          typeof price === "number" ? price : 0;
+
+        const renderProducts = (productsToRender) => {
+          productListEl.innerHTML = "";
+          if (productsToRender.length === 0) {
+            productListEl.innerHTML =
+              '<p class="text-stone-500 text-center md:col-span-2">محصولی یافت نشد.</p>';
+            return;
+          }
+          productsToRender.forEach((p) => {
+            const productCard = document.createElement("div");
+            productCard.className =
+              "bg-stone-50 border border-stone-200 p-4 rounded-lg flex flex-col justify-between";
+            productCard.innerHTML = `
+                        <div>
+                            <h3 class="font-bold text-stone-700">${p.name}</h3>
+                            <p class="text-sm text-stone-500">کد: ${p.code} | ${
+              p.cartonSize
+            }</p>
+                            <p class="text-lg font-semibold text-amber-600 my-2">${formatPrice(
+                              p.price
+                            )}</p>
+                            <p class="text-xs text-stone-500 -mt-2">قیمت هر کارتن</p>
+                        </div>
+                        <div class="flex items-center mt-3">
+                            <label for="qty-${p.code.replace(
+                              /[/\s]/g,
+                              "-"
+                            )}" class="text-sm ml-2">تعداد کارتن:</label>
+                            <input type="number" id="qty-${p.code.replace(
+                              /[/\s]/g,
+                              "-"
+                            )}" data-code="${
+              p.code
+            }" min="0" class="quantity-input w-24 p-2 border border-stone-300 rounded-md text-center" value="${
+              order[p.code]?.quantity || ""
+            }">
+                        </div>
+                    `;
+            productListEl.appendChild(productCard);
+          });
+        };
+
+        const updateOrderSummary = () => {
+          orderSummaryEl.innerHTML = "";
+          let total = 0;
+          const orderedItems = Object.values(order).filter(
+            (item) => item.quantity > 0
+          );
+
+          if (orderedItems.length === 0) {
+            orderSummaryEl.innerHTML =
+              '<p class="text-stone-500 text-center">سبد خرید شما خالی است.</p>';
+            totalPriceEl.textContent = "۰ ریال";
+            return;
+          }
+
+          orderedItems.forEach((item) => {
+            const itemEl = document.createElement("div");
+            itemEl.className = "flex justify-between items-center mb-2 text-sm";
+            const itemTotal = item.quantity * item.price;
+            total += itemTotal;
+            itemEl.innerHTML = `
+                        <span class="w-3/5 truncate">${item.name} (×${
+              item.quantity
+            })</span>
+                        <span class="font-semibold">${formatPrice(
+                          itemTotal
+                        )}</span>
+                    `;
+            orderSummaryEl.appendChild(itemEl);
+          });
+          totalPriceEl.textContent = formatPrice(total);
+        };
+
+        searchInputEl.addEventListener("input", (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          const filteredProducts = productData.filter(
+            (p) =>
+              p.name.toLowerCase().includes(searchTerm) ||
+              p.code.toLowerCase().includes(searchTerm)
+          );
+          renderProducts(filteredProducts);
+        });
+
+        productListEl.addEventListener("input", (e) => {
+          if (e.target.classList.contains("quantity-input")) {
+            const code = e.target.dataset.code;
+            const quantity = parseInt(e.target.value, 10);
+            const product = productData.find((p) => p.code === code);
+
+            if (quantity > 0) {
+              order[code] = { ...product, quantity };
+            } else {
+              delete order[code];
+              e.target.value = "";
+            }
+            updateOrderSummary();
+          }
+        });
+
+        document
+          .getElementById("generateOrder")
+          .addEventListener("click", () => {
+            const customerName =
+              document.getElementById("customerName").value || "N/A";
+            const storeName =
+              document.getElementById("storeName").value || "N/A";
+            const phoneNumber =
+              document.getElementById("phoneNumber").value || "N/A";
+
+            const orderedItems = Object.values(order).filter(
+              (item) => item.quantity > 0
+            );
+
+            if (orderedItems.length === 0) {
+              alert(
+                "سبد خرید شما خالی است. لطفاً ابتدا محصولی را به سفارش خود اضافه کنید."
+              );
+              return;
+            }
+
+            let total = 0;
+            const excelData = [
+              ["اطلاعات سفارش محصولات سیبو"],
+              [],
+              ["نام و نام خانوادگی:", customerName],
+              ["نام فروشگاه:", storeName],
+              ["شماره همراه:", phoneNumber],
+              ["تاریخ ثبت:", new Date().toLocaleString("fa-IR")],
+              [],
+              [
+                "کد کالا",
+                "نام کالا",
+                "تعداد کارتن",
+                "قیمت هر کارتن (ریال)",
+                "جمع جزء (ریال)",
+              ],
+            ];
+
+            orderedItems.forEach((item) => {
+              const itemTotal = item.quantity * item.price;
+              total += itemTotal;
+              excelData.push([
+                item.code,
+                item.name,
+                item.quantity,
+                formatPriceForExcel(item.price),
+                formatPriceForExcel(itemTotal),
+              ]);
+            });
+
+            excelData.push([]);
+            excelData.push([
+              "",
+              "",
+              "",
+              "جمع کل (ریال):",
+              formatPriceForExcel(total),
+            ]);
+
+            const worksheet = XLSX.utils.aoa_to_sheet(excelData);
+
+            const mainHeaderStyle = {
+              font: { bold: true, sz: 18, color: { rgb: "FFFFFFFF" } },
+              fill: { fgColor: { rgb: "FF78716c" } },
+              alignment: { vertical: "center", horizontal: "center" },
+            };
+            const infoHeaderStyle = { font: { bold: true } };
+            const tableHeaderStyle = {
+              font: { bold: true, color: { rgb: "FF44403c" } },
+              fill: { fgColor: { rgb: "FFFBBF24" } },
+            };
+            const totalLabelStyle = {
+              font: { bold: true },
+              alignment: { horizontal: "right" },
+            };
+            const totalValueStyle = {
+              font: { bold: true },
+              fill: { fgColor: { rgb: "FFFFFBEB" } },
+            };
+
+            worksheet["A1"].s = mainHeaderStyle;
+            worksheet["!merges"] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
+
+            ["A3", "A4", "A5", "A6"].forEach((cell) => {
+              if (worksheet[cell]) worksheet[cell].s = infoHeaderStyle;
+            });
+
+            const tableHeaderRow = 7;
+            ["A", "B", "C", "D", "E"].forEach((col) => {
+              const cellRef = col + (tableHeaderRow + 1);
+              if (worksheet[cellRef]) worksheet[cellRef].s = tableHeaderStyle;
+            });
+
+            const totalRowIndex = 8 + orderedItems.length + 2;
+            if (worksheet["D" + totalRowIndex])
+              worksheet["D" + totalRowIndex].s = totalLabelStyle;
+            if (worksheet["E" + totalRowIndex])
+              worksheet["E" + totalRowIndex].s = totalValueStyle;
+
+            worksheet["!cols"] = [
+              { wch: 15 },
+              { wch: 50 },
+              { wch: 12 },
+              { wch: 20 },
+              { wch: 20 },
+            ];
+            worksheet["!rtl"] = true;
+
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Sefaresh");
+
+            XLSX.writeFile(
+              workbook,
+              `Sibo-Order-${storeName.replace(/\s+/g, "-")}-${new Date()
+                .toLocaleDateString("fa-IR")
+                .replace(/\//g, "-")}.xlsx`
+            );
+          });
+
+        renderProducts(productData);
+        updateOrderSummary();
+      });
+    </script>
   </body>
 </html>
